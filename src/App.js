@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route,Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import logo from "./assets/img/logo.jpg";
 import "./assets/css/style.css";
@@ -13,12 +13,23 @@ function App() {
   return (
     <div className="App">
       <Router>
-				<Routes>
-					<Route path="/" element={<Home logo={logo} alt={alt} logoAdd={logoAdd} logoList={logoList} alt2={alt2}/>} />
-          <Route path="/create" element={<Create logo={logo} alt={alt}/>} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                logo={logo}
+                alt={alt}
+                logoAdd={logoAdd}
+                logoList={logoList}
+                alt2={alt2}
+              />
+            }
+          />
+          <Route path="/create" element={<Create logo={logo} alt={alt} />} />
           <Route path="/list" element={<List />} />
-				</Routes>
-			</Router>
+        </Routes>
+      </Router>
     </div>
   );
 }
