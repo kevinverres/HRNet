@@ -1,52 +1,82 @@
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { addEmployee } from "../../service/hrnetSlice";
+import { useNavigate } from "react-router-dom";
+import Selector from "../../component/Selector";
+import Date from "../../component/Date";
 
 export default function Create({logo, alt}) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {state, department} = useSelector(state => state.hrnet);
+    function move() {
+        navigate("/")
+    }
+
+    function saveEmployee(e) {
+        e.preventDefault();
+        const firstName = e.target[0].value
+        const lastName = e.target[1].value
+        const dateOfBirth = e.target[2].value
+        const startDate = e.target[3].value
+        const street = e.target[5].value
+        const city = e.target[6].value
+        const state = e.target[7].value
+        const zipCode = e.target[8].value
+        const department = e.target[9].value
+        const employee = {
+            firstName: firstName,
+            lastName: lastName,
+            dateOfBirth: dateOfBirth,
+            startDate: startDate,
+            department: department,
+            street: street,
+            city: city,
+            state: state,
+            zipCode: zipCode
+        };
+        // console.log(employee)
+        dispatch(addEmployee(employee))
+        navigate("/")
+    }
     return (
         <>
             <div className="container-create">
                 <img src={logo} alt={alt} />
-                <div id="confirmation" className="modal">Employee Created!</div>
-                <form action="#" id="create-employee">
+                <form action="#" id="create-employee" onSubmit={saveEmployee}>
                     <h2>Create Employee</h2>
-                    <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" />
+                    <label>First Name</label>
+                    <input required type="text" id="first-name" />
 
-                    <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" />
+                    <label>Last Name</label>
+                    <input required type="text" id="last-name" />
 
-                    <label for="date-of-birth">Date of Birth</label>
-                    <input id="date-of-birth" type="text" />
+                    <label>Date of Birth</label>
+                    <input required id="date-of-birth" type="text" />
 
-                    <label for="start-date">Start Date</label>
-                    <input id="start-date" type="text" />
+                    <label>Start Date</label>
+                    <Date name={"date"} id={"start-date"}/>
 
                     <fieldset className="address">
                         <legend>Address</legend>
 
-                        <label for="street">Street</label>
-                        <input id="street" type="text" />
+                        <label>Street</label>
+                        <input required id="street" type="text" />
 
-                        <label for="city">City</label>
-                        <input id="city" type="text" />
+                        <label>City</label>
+                        <input required id="city" type="text" />
 
-                        <label for="state">State</label>
-                        <select name="state" id="state"></select>
+                        <label>State</label>
+                        <Selector name={"state"} id={"state"} data={state}/>
 
-                        <label for="zip-code">Zip Code</label>
-                        <input id="zip-code" type="number" />
+                        <label>Zip Code</label>
+                        <input required id="zip-code" type="number" />
                     </fieldset>
 
-                    <label for="department">Department</label>
-                    <select name="department" id="department">
-                        <option>Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </select>
+                    <label>Department</label>
+                    <Selector name={"department"} id={"department"} data={department}/>
+                    <input className="btn-createEmployee" type="submit" value="save" />
                 </form>
-                <button onclick="saveEmployee()">Save</button>
+                <button onClick={move}>Retour</button>
             </div>
         </>
     )

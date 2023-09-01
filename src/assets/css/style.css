@@ -1,3 +1,5 @@
+/* ALL */
+html, body{height:100%;} 
 /* Home css */
 .title {
     display: flex;
@@ -103,13 +105,13 @@
     width: 400px;
     height: 30px;
 }
-.container-create button {
+.container-create .btn-createEmployee {
     width: 400px;
     height: 25px;
     margin: 1rem 0 4rem 0;
     transition: 0.5s;
 }
-.container-create button:hover {
+.container-create .btn-createEmployee:hover {
     color: #fff;
     background-color: rgb(14, 71, 15);
     border-radius: 25px;
@@ -121,4 +123,74 @@ label {
 }
 .address {
     margin-top: 10px;
+}
+
+
+/* Employye List */
+#employee-div {
+    background: -moz-linear-gradient(180deg, rgba(87,169,85,0) 20%, rgba(14,71,15,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(87,169,85,0) 20%, rgba(14,71,15,1) 100%);
+    background: linear-gradient(180deg, rgba(87,169,85,0) 20%, rgba(14,71,15,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#57a955",endColorstr="#0e470f",GradientType=1);
+    min-height: 77.2vw;
+}
+.employee {
+    text-decoration: none;
+    cursor: pointer;
+}
+.box-search {
+    display: flex;
+    height: 25px;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    /* border: #000000 solid 2px; */
+}
+.box-search-number {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    height: 20px;
+}
+.box-search-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 240px;
+    height: 20px;
+}
+.table {
+    width: 80%;
+    border-collapse: collapse;
+}
+.table tbody {
+    border-top: #000000 solid 2px;
+    border-bottom: #000000 solid 2px;
+}
+.table th, .table td {
+    padding: 8px;
+}
+.table tbody tr {
+    border-bottom: #00000046 solid 1px;
+}
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+}
+.pagination-number {
+    padding: 0.5rem 1rem;
+    border: rgba(0, 0, 0, 0.436) 1px solid;
+    border-radius: 2px;
+}
+.btn-pagination {
+    cursor: pointer;
 }
