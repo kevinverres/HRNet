@@ -3,26 +3,33 @@ import { addEmployee } from "../../service/hrnetSlice";
 import { useNavigate } from "react-router-dom";
 import Selector from "../../component/Selector";
 import Date from "../../component/Date";
+import { Modal } from "modal-library-kv";
+import { useEffect, useState } from "react";
 
 export default function Create({logo, alt}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {state, department} = useSelector(state => state.hrnet);
+    const [openModal, setOpenModal] = useState(false)
     function move() {
         navigate("/")
     }
-
+    /**
+     * Permet d'enregistrer un nouvel utilisateur
+     * @param {HTMLElement} HTMLElement L'élément html contenant les informations
+     */
     function saveEmployee(e) {
         e.preventDefault();
-        const firstName = e.target[0].value
-        const lastName = e.target[1].value
-        const dateOfBirth = e.target[2].value
-        const startDate = e.target[3].value
-        const street = e.target[5].value
-        const city = e.target[6].value
-        const state = e.target[7].value
-        const zipCode = e.target[8].value
-        const department = e.target[9].value
+        let firstName = e.target[0].value
+        let lastName = e.target[1].value
+        let dateOfBirth = e.target[2].value
+        let startDate = e.target[3].value
+        let street = e.target[5].value
+        let city = e.target[6].value
+        let state = e.target[7].value
+        let zipCode = e.target[8].value
+        let department = e.target[9].value
+        const form = document.forms["create-employee"];
         const employee = {
             firstName: firstName,
             lastName: lastName,
@@ -34,10 +41,17 @@ export default function Create({logo, alt}) {
             state: state,
             zipCode: zipCode
         };
-        // console.log(employee)
+        
         dispatch(addEmployee(employee))
-        navigate("/")
+        form.reset()
+        setOpenModal(true);
     }
+    useEffect(() => {
+        if (openModal) {
+            window.addEventListener('click', () => setOpenModal(false));
+            return () => window.removeEventListener('click', () => setOpenModal(false));
+        }
+    });
     return (
         <>
             <div className="container-create">
@@ -51,7 +65,7 @@ export default function Create({logo, alt}) {
                     <input required type="text" id="last-name" />
 
                     <label>Date of Birth</label>
-                    <input required id="date-of-birth" type="text" />
+                    <Date name={"date"} id={"date-of-birth"}/>
 
                     <label>Start Date</label>
                     <Date name={"date"} id={"start-date"}/>
@@ -78,6 +92,7 @@ export default function Create({logo, alt}) {
                 </form>
                 <button onClick={move}>Retour</button>
             </div>
+            {openModal ? <Modal /> : null}
         </>
     )
 }

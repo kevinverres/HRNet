@@ -5,7 +5,7 @@ export const hrnetSlice = createSlice({
     initialState: {
         employees: [
             {
-                firstName: "kevin",
+                firstName: "kevinr",
                 lastName: "lastName",
                 dateOfBirth: "dateOfBirth",
                 startDate: "startDate",
@@ -50,7 +50,10 @@ export const hrnetSlice = createSlice({
             }
         ],
         filteredEmployees: [],
-        showEntries: 4,
+        totalCount: 4,
+        currentPage: 1,
+        siblingCount: 0,
+        pageSize: 1,
         department: [
             "Sales",
             "Marketing",
@@ -300,22 +303,24 @@ export const hrnetSlice = createSlice({
     reducers: {
         addEmployee: (state, action) => {
             state.employees.push(action.payload)
-            state.showEntries += 1
         },
-        editShowEntries: (state, action) => {
-            state.showEntries = action.payload
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload
         },
-        editFilteredEmployee: (state, action) => {
+        setPageSize: (state, action) => {
+            state.pageSize = action.payload
+        },
+        setfilteredEmployees: (state, action) => {
             state.filteredEmployees.push(action.payload)
-            state.showEntries += 1
+            state.totalCount += 1
         },
-        resetFilteredEmployee: (state, action) => {
+        resetfilteredEmployees: (state, action) => {
             state.filteredEmployees = []
-            state.showEntries = 0
+            state.totalCount = 0
         }
     }
 })
 
-export const { addEmployee, editShowEntries, editFilteredEmployee, resetFilteredEmployee } = hrnetSlice.actions
+export const { addEmployee, editShowEntries, setCurrentPage, setPageSize, setfilteredEmployees, resetfilteredEmployees } = hrnetSlice.actions
 
 export default hrnetSlice.reducer

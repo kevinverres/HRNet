@@ -127,13 +127,6 @@ label {
 
 
 /* Employye List */
-#employee-div {
-    background: -moz-linear-gradient(180deg, rgba(87,169,85,0) 20%, rgba(14,71,15,1) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(87,169,85,0) 20%, rgba(14,71,15,1) 100%);
-    background: linear-gradient(180deg, rgba(87,169,85,0) 20%, rgba(14,71,15,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#57a955",endColorstr="#0e470f",GradientType=1);
-    min-height: 77.2vw;
-}
 .employee {
     text-decoration: none;
     cursor: pointer;
@@ -160,6 +153,9 @@ label {
     width: 240px;
     height: 20px;
 }
+#employee-div {
+    margin: 0 auto;
+}
 .table {
     width: 80%;
     border-collapse: collapse;
@@ -170,6 +166,7 @@ label {
 }
 .table th, .table td {
     padding: 8px;
+    text-align: left;
 }
 .table tbody tr {
     border-bottom: #00000046 solid 1px;
@@ -180,17 +177,17 @@ label {
     align-items: center;
     width: 80%;
 }
-.pagination {
+.table th div {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 150px;
 }
-.pagination-number {
-    padding: 0.5rem 1rem;
-    border: rgba(0, 0, 0, 0.436) 1px solid;
-    border-radius: 2px;
+.table th div p {
+    margin: 0 0.5rem 0 0;
 }
-.btn-pagination {
-    cursor: pointer;
+#sort {
+    border: none;
+    background-color: transparent;
+    transition: 0.5s;
+}
+.spin {
+    transform: rotate(180deg);
 }

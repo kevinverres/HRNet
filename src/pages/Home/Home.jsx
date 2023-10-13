@@ -15,6 +15,5 @@ export default function Home({logo, alt, logoAdd, logoList, alt2}) {
             </div>
             <p className="version">Powered by React <span>{React.version}</span></p>
         </div>
-        {/* <div id="confirmation" className="modal">Employee Created!</div> */}
     </>
 )}
