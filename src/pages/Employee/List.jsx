@@ -19,6 +19,7 @@ export default function List() {
      */
     function Showing(input) {
         dispatch(setPageSize(input.target.value))
+        dispatch(setCurrentPage(1))
     }
     /**
      * Permet d'afficher le tableau

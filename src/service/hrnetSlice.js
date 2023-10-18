@@ -303,6 +303,7 @@ export const hrnetSlice = createSlice({
     reducers: {
         addEmployee: (state, action) => {
             state.employees.push(action.payload)
+            state.totalCount += 1
         },
         setCurrentPage: (state, action) => {
             state.currentPage = action.payload
