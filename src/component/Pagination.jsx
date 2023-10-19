@@ -3,6 +3,11 @@ import classnames from 'classnames';
 import { usePagination, DOTS } from '../service/usePagination';
 import '../assets/css/pagination.scss';
 
+/**
+ * Permet de créé le système de pagination
+ * @param {{onPageChange: number, totalCount: number, siblingCount: number, currentPage: number, pageSize: number, className: string}} props 
+ * @returns HTMLElement
+ */
 const Pagination = props => {
   const {
     onPageChange,

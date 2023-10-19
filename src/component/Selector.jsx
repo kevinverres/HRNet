@@ -1,7 +1,7 @@
 /**
  * 
  * @param {{name: string, id: number, data: string[]}}
- * @returns 
+ * @returns HTMLElement
  */
 export default function Selector({name, id, data}) {
     return (

@@ -1,5 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
+/**
+ * 
+ * @param {{logo: string, alt: string, title: string}} props 
+ * @returns HTMLElement
+ */
 export default function Card({logo, alt, title}) {
     const navigate = useNavigate();
     function move(e) {
